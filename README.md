@@ -7,6 +7,7 @@
 
 ## Deliverables:
 - Complete the CRD functionality for front-end and back-end for Queens.
+- A PR by 11pm tonight.
 
 ## Bonus:
 - Complete the update functionality for front-end and back-end for Queens. We didn't get to this part in class due to timing, but it will be covered tomorrow.
