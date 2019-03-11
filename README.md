@@ -2,7 +2,7 @@
 
 ## Getting Started:
 - Fork and clone this repo.
-- Notice how I moved the back-end to the root directory.
+- Notice how the back-end was moved to the root directory.
 - The front-end is located inside client.
 
 ## Deliverables:
