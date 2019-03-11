@@ -2,6 +2,8 @@
 
 ## Getting Started:
 - Fork and clone this repo.
+- Notice how I moved the back-end to the root directory.
+- The front-end is located inside client.
 
 ## Deliverables:
 - Complete the CRD functionality for front-end and back-end for Queens.
