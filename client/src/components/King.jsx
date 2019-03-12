@@ -8,7 +8,7 @@ class King extends Component {
 
     this.deleteKing = this.deleteKing.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.updateKing = this.updateKing.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
 
     this.state = {
       king: "",
@@ -36,14 +36,11 @@ class King extends Component {
       deleted: true
     });
   }
-  async updateKing() {
+  async handleUpdate() {
     const newKingName = this.state.newKingName;
-    const res = await axios({
-      method: "update",
-      url: "http://localhost:9000/kings",
-      headers: {
-        name: newKingName
-      }
+    const id = this.props.match.params.id;
+    const res = await axios.put(`http://localhost:9000/kings/${id}`, {
+      name: newKingName
     });
 
     this.king();

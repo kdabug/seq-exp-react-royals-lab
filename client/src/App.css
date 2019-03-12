@@ -3,6 +3,8 @@ a {
 }
 body {
   background-color: purple;
+  color: black;
+  text-emphasis: strong;
 }
 
 .kings-list-container {
@@ -19,6 +21,9 @@ body {
 nav a {
   display: flex;
   flex-direction: space-between;
+  font-size: 20px;
+  color: black;
+  text-emphasis: strong;
 }
 
 .queens-list-container {

@@ -36,14 +36,11 @@ class Queen extends Component {
       deleted: true
     });
   }
-  async updateQueen() {
-    const newQueenName = this.state.newQueenName;
-    const res = await axios({
-      method: "update",
-      url: "http://localhost:9000/queens",
-      headers: {
-        name: newQueenName
-      }
+  async handleUpdate() {
+    const { newQueenName } = this.state;
+    const { id } = this.props.match.params;
+    const res = await axios.put(`http://localhost:9000/queens/${id}`, {
+      name: newQueenName
     });
 
     this.queen();

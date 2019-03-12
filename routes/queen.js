@@ -43,10 +43,13 @@ queenRouter.get("/:id", async (req, res) => {
 queenRouter.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const queen = Queens.findByPk(id);
-    await queen.update(req.headers.name);
+    const queen = await Queens.findByPk(id);
+    //console.log("QUEEN", queen);
+    // console.log("BODY QUEEN: ", req.body);
+    const updatedQueen = await queen.update(req.body);
+    console.log("UPDATED QUEEN: ", updatedQueen);
     res.json({
-      queen
+      updatedQueen
     });
   } catch (e) {
     console.error(e);

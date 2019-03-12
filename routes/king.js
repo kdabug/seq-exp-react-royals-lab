@@ -1,76 +1,74 @@
-const express = require('express');
+const express = require("express");
 
-const { Kings } = require('../models');
+const { Kings } = require("../models");
 
 const kingRouter = express.Router();
 
 kingRouter.use((req, res, next) => {
-  console.log('i\'m a king Router middleware. Holy cow!');
+  console.log("i'm a king Router middleware. Holy cow!");
   next();
-})
+});
 
 // routes
-kingRouter.get('/', async (req, res) => {
+kingRouter.get("/", async (req, res) => {
   try {
-    const kings = await Kings.findAll()
+    const kings = await Kings.findAll();
     res.json(kings);
-  }
-  catch(e){
+  } catch (e) {
     console.error(e);
   }
-})
+});
 
-kingRouter.post('/', async (req, res) => {
+kingRouter.post("/", async (req, res) => {
   try {
     const king = await Kings.create({
       name: req.headers.name
-    })
-    res.json({king})
-  } catch(e) {
+    });
+    res.json({ king });
+  } catch (e) {
     console.error(e);
   }
-})
+});
 
-kingRouter.get('/:id', async(req, res) => {
+kingRouter.get("/:id", async (req, res) => {
   try {
-    const id = req.params.id
+    const id = req.params.id;
     const king = await Kings.findByPk(id);
-    res.json(king)
-  } catch(e){
-    console.error(e)
+    res.json(king);
+  } catch (e) {
+    console.error(e);
   }
-})
+});
 
-kingRouter.put('/:id', async (req, res) => {
+kingRouter.put("/:id", async (req, res) => {
   try {
-    const id = req.params.id
-    const king = Kings.findByPk(id)
-    await king.update(req.headers.name)
+    const id = req.params.id;
+    const king = await Kings.findByPk(id);
+    const updatedKing = await king.update(req.body);
+    console.log("UPDATED KING: ", updatedKing);
     res.json({
-      king
-    })
-  } catch(e) {
-    console.error(e)
+      updatedKing
+    });
+  } catch (e) {
+    console.error(e);
   }
-})
+});
 
-kingRouter.delete('/:id', async (req, res) => {
+kingRouter.delete("/:id", async (req, res) => {
   try {
-    const id = req.params.id
+    const id = req.params.id;
     await Kings.destroy({
       where: {
         id: id
       }
-    })
+    });
     res.json({
       message: `King with id ${id} was destroyed!`
-    })
+    });
   } catch (e) {
     console.error(e);
   }
-})
-
-
+});
 
 module.exports = {
   kingRouter
