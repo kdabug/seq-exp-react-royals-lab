@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import {Link} from "react-router-dom";
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 class KingList extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.kings = this.kings.bind(this);
@@ -13,59 +13,59 @@ class KingList extends Component {
     this.state = {
       kings: [],
       newKing: ""
-    }
+    };
   }
 
   async kings() {
-    const res = await axios.get(`http://localhost:9000/kings`)
+    const res = await axios.get(`http://localhost:9000/kings`);
     this.setState({
       kings: res.data
-    })
+    });
   }
 
-  componentDidMount(){
-    this.kings()
+  componentDidMount() {
+    this.kings();
   }
 
   async addKing() {
-    const newKing = this.state.newKing
+    const newKing = this.state.newKing;
     const res = await axios({
       method: "post",
-      url: 'http://localhost:9000/kings',
+      url: "http://localhost:9000/kings",
       headers: {
         name: newKing
       }
-    })
+    });
 
-    this.kings()
+    this.kings();
   }
 
-  handleChange(e){
+  handleChange(e) {
     this.setState({
-      newKing: e.target.value,
-    })
+      newKing: e.target.value
+    });
   }
 
   render() {
-    const kings = this.state.kings
+    const kings = this.state.kings;
     return (
       <div>
         <div>
-          {kings.map(king => (
-            <Link to={`/kings/${king.id}`}>
-              {king.name}
-            </Link>)
-          )}
+          <ul className="kings-list-container">
+            {kings.map(king => (
+              <Link to={`/kings/${king.id}`}>
+                <li className="all-kings-list">{king.name} </li>
+              </Link>
+            ))}
+          </ul>
         </div>
 
-        <br/>
-        <input onChange={this.handleChange}></input>
-        <br/>
+        <br />
+        <input onChange={this.handleChange} />
+        <br />
         <button onClick={this.addKing}>Add King</button>
-
       </div>
-    )
-
+    );
   }
 }
 

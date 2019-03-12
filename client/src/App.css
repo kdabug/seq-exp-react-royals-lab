@@ -20,3 +20,14 @@ nav a {
   display: flex;
   flex-direction: space-between;
 }
+
+.queens-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: salmon;
+}
+
+.all-queens-list {
+  text-decoration: none;
+  color: white;
+}
