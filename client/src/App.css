@@ -1,3 +1,22 @@
 a {
   margin-right: 10px;
 }
+body {
+  background-color: purple;
+}
+
+.kings-list-container {
+  display: flex;
+  flex-direction: column;
+  background-color: aqua;
+}
+
+.all-kings-list {
+  text-decoration: none;
+  color: darkgreen;
+}
+
+nav a {
+  display: flex;
+  flex-direction: space-between;
+}
